@@ -11,10 +11,12 @@ services:
     image: nginx:alpine
     container_name: tpl3-nginx
     ports:
-      - "8086:80"
+      - "8086:80"    # optional HTTP for redirect
+      - "8443:443"   # HTTPS port
     volumes:
       - .:/var/www/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certs:/etc/nginx/certs
     depends_on:
       - php
     networks:
