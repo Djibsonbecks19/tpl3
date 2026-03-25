@@ -28,12 +28,12 @@ jobs:
       if: success()
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data "{\"text\":\"✅ Docker build & push SUCCESS for ${{ github.repository }} on branch ${{ github.ref }}\"}" \
+        --data "{\"text\":\"Docker build et push SUCCESS\"}" \
         ${{ secrets.SLACK_WEBHOOK_URL }}
 
     - name: Slack Failure
       if: failure()
       run: |
         curl -X POST -H 'Content-type: application/json' \
-        --data "{\"text\":\"❌ Docker build & push FAILED for ${{ github.repository }} on branch ${{ github.ref }}\"}" \
+        --data "{\"text\":\"Docker build et push FAILED\"}" \
         ${{ secrets.SLACK_WEBHOOK_URL }}
